@@ -1,0 +1,1 @@
+Um gerenciador da GPU e CPU, mostra a % de uso de ambos.
