@@ -6,16 +6,20 @@ import java.awt.event.ActionEvent;
 
 // esse codigo vai ser rico em comentarios pois estou aprendendo a usar o "Swing" e as bibliotecas relacionadas
 
-public class ClassWindow {
+    public class ClassWindow {
     public static void main(String[] args) {
+        // define uma propriedade do sistema Java. Uma configuracao global
+        // tira o headless e ativa o headful. Ativa o GUI
         System.setProperty("java.awt.headless", "false");
 
+        //verifica se a GUI nao ta disponivel
         if (java.awt.GraphicsEnvironment.isHeadless()) {
             System.err.println("Ambiente sem suporte gráfico (headless)");
             return;
         }
-
+        
         javax.swing.SwingUtilities.invokeLater(() -> {
+            // cria a janela principal
             new AppWindow();
         });
     }
