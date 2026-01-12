@@ -1,1 +1,2 @@
-Um gerenciador da GPU e CPU, mostra a % de uso de ambos.
+- Um gerenciador da GPU e CPU, mostra a % de uso de ambos.
+- Mas tem utilidades escondidas (pretendo adicionar mais)
