@@ -1,0 +1,29 @@
+<component name="libraryTable">
+  <library name="dorkbox.SystemTray" type="repository">
+    <properties maven-id="com.dorkbox:SystemTray:4.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/SystemTray/4.4/SystemTray-4.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/Collections/2.4/Collections-2.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/Executor/3.13/Executor-3.13.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.8.0/kotlin-stdlib-1.8.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.8.0/kotlin-stdlib-common-1.8.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-coroutines-jdk8/1.7.1/kotlinx-coroutines-jdk8-1.7.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/Desktop/1.1/Desktop-1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/JNA/1.2/JNA-1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/OS/1.8/OS-1.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/Updates/1.1/Updates-1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/dorkbox/Utilities/1.46/Utilities-1.46.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.7.3/kotlinx-coroutines-core-jvm-1.7.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/uuid/java-uuid-generator/4.2.0/java-uuid-generator-4.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/javassist/javassist/3.29.2-GA/javassist-3.29.2-GA.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna-jpms/5.13.0/jna-jpms-5.13.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform-jpms/5.13.0/jna-platform-jpms-5.13.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.8.0-beta4/slf4j-api-1.8.0-beta4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.0/kotlin-stdlib-jdk8-1.8.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.0/kotlin-stdlib-jdk7-1.8.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

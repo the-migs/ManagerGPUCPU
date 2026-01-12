@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 // esse codigo vai ser rico em comentarios pois estou aprendendo a usar o "Swing" e as bibliotecas relacionadas
 
     public class ClassWindow {
-    public static void main(String[] args) {
+    public static void metodCenter(){
         // define uma propriedade do sistema Java. Uma configuracao global
         // tira o headless e ativa o headful. Ativa o GUI
         System.setProperty("java.awt.headless", "false");
@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
             System.err.println("Ambiente sem suporte gráfico (headless)");
             return;
         }
-        
+
         javax.swing.SwingUtilities.invokeLater(() -> {
             // cria a janela principal
             new AppWindow();
@@ -28,7 +28,8 @@ class AppWindow extends JFrame {
 
     public AppWindow() {
         //fechar e parar a execucao ao clicar no X
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //sempre no topo, acima das janelas mesmo se abrir novas
         setAlwaysOnTop(true);
         //tamanho da tela principal
