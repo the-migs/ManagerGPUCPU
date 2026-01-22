@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 
 // esse codigo vai ser rico em comentarios pois estou aprendendo a usar o "Swing" e as bibliotecas relacionadas
 
-    public class ClassWindow {
-    public static void metodCenter(){
+public class ClassWindow {
+    static void metodCenter(){
         // define uma propriedade do sistema Java. Uma configuracao global
         // tira o headless e ativa o headful. Ativa o GUI
         System.setProperty("java.awt.headless", "false");
@@ -25,18 +25,22 @@ import java.awt.event.ActionEvent;
     }
 }
 class AppWindow extends JFrame {
-
-    public AppWindow() {
-        //fechar e parar a execucao ao clicar no X
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    private Timer cpuTimer, gpuTimer;
+    AppWindow() {
+        //fechar e parar a execucao ao clicar no X so dessa pagina
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         //sempre no topo, acima das janelas mesmo se abrir novas
         setAlwaysOnTop(true);
         //tamanho da tela principal
         setSize(500, 100);
 
-          //faz abrir sempre no centro
-          // setLocationRelativeTo(null);
+        // adiciona o icone da barra da janela do app (no lado esquerdo)
+        Image icon = Toolkit.getDefaultToolkit().getImage(AppWindow.class.getResource("/A.png"));
+        setIconImage(icon);
+
+        //faz abrir sempre no centro
+        // setLocationRelativeTo(null);
 
         // tera 1 linha e 2 colinas
         // 0 espaço vertical e horizontal
@@ -47,18 +51,35 @@ class AppWindow extends JFrame {
         // tamanho da tela principal
         setSize(500, 100);
         setLayout(new BorderLayout());
+
+        WestPanel west = new WestPanel();
+        LestPanel lest = new LestPanel();
+        // pega os timers dos painéis
+        cpuTimer = west.getTimer();
+        gpuTimer = lest.getTimer();
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                // para os timers quando a janela fecha
+                if (cpuTimer != null) cpuTimer.stop();
+                if (gpuTimer != null) gpuTimer.stop();
+                System.out.println("Timers parados, janela fechada.");
+            }
+        });
         // puxa os construtores dos dois paineis (direito/esquerdo)
         // adiciona eles no containel
-        container.add(new WestPanel());
-        container.add(new LestPanel());
+        container.add(west);
+        container.add(lest);
         //adiciona o container na tela inicial
         add(container);
         setVisible(true);
     }
 }
 class WestPanel extends JPanel {
+    private Timer timer;
     // configuracao do painel esquerdo
-    public WestPanel() {
+    WestPanel() {
         // torna o painel transparente, passando a responsabilidade
         setOpaque(false);
 
@@ -116,17 +137,19 @@ class WestPanel extends JPanel {
         textTwo.setHorizontalAlignment(JLabel.CENTER);
 
         // timer para resetar a % de uso da CPU
-        Timer time = new Timer(650, e -> {
+        timer = new Timer(650, e -> {
             textTwo.setText(CPUGPU.getCPU());
             revalidate();
             repaint();
         });
-        time.start();
+        timer.start();
     }
+    public Timer getTimer() { return timer; }
 }
 class LestPanel extends JPanel {
+    private Timer timer;
     // configuracao do painel direito
-    public LestPanel(){
+    LestPanel(){
         setOpaque(false);
 
         setPreferredSize(new Dimension(250, 60));
@@ -155,9 +178,10 @@ class LestPanel extends JPanel {
 
         top.add(text, BorderLayout.CENTER);
 
-        Timer time = new Timer(650, e ->{
+        timer = new Timer(650, e ->{
             textTwo.setText(CPUGPU.getGPU());
         });
-        time.start();
+        timer.start();
     }
+    public Timer getTimer() { return timer; }
 }

@@ -19,14 +19,17 @@ public class TrayClass {
         Menu menu = traySystem.getMenu();
 
         MenuItem open = new MenuItem("Open management");
+        MenuItem cameraASCII = new MenuItem("Camera ASCII");
         MenuItem dance = new MenuItem("Just dance");
         MenuItem exit = new MenuItem("Exit");
 
         menu.add(open);
+        menu.add(cameraASCII);
         menu.add(dance);
         menu.add(exit);
 
         open.setCallback(e -> {ClassWindow.metodCenter();});
+        cameraASCII.setCallback(e -> {new Thread(CameraASCII::metodSuprem).start();});
         dance.setCallback(e -> {JustDance.metodJustDance();});
         exit.setCallback(e -> {traySystem.shutdown();
             System.exit(0);
