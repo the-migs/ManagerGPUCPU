@@ -57,6 +57,7 @@ class Window extends JFrame {
     static ImagePanel imagePanel;
     static JSplitPane split;
     private Timer repaintTimer;
+    private Color purple = new Color(64, 5, 123);
     Image icon = Toolkit.getDefaultToolkit().getImage(Window.class.getResource("/A.png"));
     Window(){
         setTitle("Camera ASCII");
@@ -81,55 +82,81 @@ class Window extends JFrame {
         imagePanel = new ImagePanel();
         JPanel controls = new JPanel();
         controls.setLayout(new BoxLayout(controls, BoxLayout.Y_AXIS));
-        controls.setBorder(BorderFactory.createLineBorder(Color.CYAN, 4));
-        JLabel title = new JLabel("> Lighting configuration <");
-        title.setForeground(Color.CYAN);
+        controls.setBorder(BorderFactory.createLineBorder(new Color(purple.getRGB()), 4));
 
-        title.setFont(new Font("SansSerif", Font.BOLD, 60));
-        title.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+        JLabel title = new JLabel(" Lighting configuration ");
+        title.setForeground(new Color(purple.getRGB()));
+
+        title.setFont(new Font("SansSerif", Font.BOLD, 48));
+        title.setBorder(BorderFactory.createLineBorder(new Color(purple.getRGB()), 3));
 
 
         JButton almostNoButton = new JButton("Almost No lighting");
         almostNoButton.setFont(new Font("SansSerif", Font.BOLD, 30));
         almostNoButton.setFocusPainted(false);
         almostNoButton.setPreferredSize(new Dimension(455, 55)); // quadrado 120x120
-        almostNoButton.setMinimumSize(new Dimension(455, 55));
+        almostNoButton.setMinimumSize(new Dimension(200, 22));
         almostNoButton.setMaximumSize(new Dimension(455, 55));
 
         JButton littleButton = new JButton("Little Lighting");
         littleButton.setFont(new Font("SansSerif", Font.BOLD, 30));
         littleButton.setFocusPainted(false);
         littleButton.setPreferredSize(new Dimension(455, 55));
-        littleButton.setMinimumSize(new Dimension(455, 55));
+        littleButton.setMinimumSize(new Dimension(200, 22));
         littleButton.setMaximumSize(new Dimension(455, 55));
 
         JButton considerableButton = new JButton("Considerable Lighting");
         considerableButton.setFont(new Font("SansSerif", Font.BOLD, 30));
         considerableButton.setFocusable(false);
         considerableButton.setPreferredSize(new Dimension(455, 55));
-        considerableButton.setMinimumSize(new Dimension(455, 55));
+        considerableButton.setMinimumSize(new Dimension(200, 22));
         considerableButton.setMaximumSize(new Dimension(455, 55));
 
         JButton mediumButton = new JButton("Medium Lighting");
         mediumButton.setFont(new Font("SansSerif", Font.BOLD, 30));
         mediumButton.setFocusable(false);
         mediumButton.setPreferredSize(new Dimension(455, 55));
-        mediumButton.setMinimumSize(new Dimension(455, 55));
+        mediumButton.setMinimumSize(new Dimension(200, 22));
         mediumButton.setMaximumSize(new Dimension(455, 55));
 
         JButton muchButton = new JButton("Much Lighting");
         muchButton.setFont(new Font("SansSerif", Font.BOLD, 30));
         muchButton.setFocusable(false);
         muchButton.setPreferredSize(new Dimension(455, 55));
-        muchButton.setMinimumSize(new Dimension(455, 55));
+        muchButton.setMinimumSize(new Dimension(200, 22));
         muchButton.setMaximumSize(new Dimension(455, 55));
 
         JButton extremeButton = new JButton("Extreme Lighting");
         extremeButton.setFont(new Font("SansSerif", Font.BOLD, 30));
         extremeButton.setFocusable(false);
         extremeButton.setPreferredSize(new Dimension(455, 55));
-        extremeButton.setMinimumSize(new Dimension(455, 55));
+        extremeButton.setMinimumSize(new Dimension(200, 22));
         extremeButton.setMaximumSize(new Dimension(455, 55));
+
+        JLabel textIndication = new JLabel("Custon character:");
+        textIndication.setFont(new Font("Segoe UI", Font.BOLD, 25));
+
+        JTextField custonText = new JTextField();
+        custonText.setFont(new Font("SansSerif", Font.BOLD, 30));
+        custonText.setPreferredSize(new Dimension(500, 55));
+        custonText.setMinimumSize(new Dimension(200, 22));
+        custonText.setMaximumSize(new Dimension(500, 55));
+
+        JTextArea tips = new JTextArea("-> Insert a \"space\" as the first character for a better outline.\n" +
+                                      "-> The more characters, the more sensitive to light.\n" +
+                                      "-> Enter more than 3 characters and put the shortest ones first.\n"
+                );
+        tips.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        tips.setPreferredSize(new Dimension(500, 62));
+        tips.setMinimumSize(new Dimension(200, 22));
+        tips.setMaximumSize(new Dimension(500, 62));
+        tips.setLineWrap(true);
+        tips.setEditable(false);
+        tips.setWrapStyleWord(true);
+        tips.setOpaque(false);
+
+        JLabel myName = new JLabel("Created by \"the-migs\"");
+        myName.setFont(new Font("Segoe UI", Font.BOLD, 15));
 
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         almostNoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -138,6 +165,10 @@ class Window extends JFrame {
         mediumButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         muchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         extremeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textIndication.setAlignmentX(Component.CENTER_ALIGNMENT);
+        custonText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        tips.setAlignmentX(Component.CENTER_ALIGNMENT);
+        myName.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         almostNoButton.addActionListener(e -> {
             CameraASCII.characterValue = CameraASCII.almostNoLightingString;
@@ -161,6 +192,12 @@ class Window extends JFrame {
 
         extremeButton.addActionListener(e -> {
             CameraASCII.characterValue = CameraASCII.extremeLightingString;
+        });
+
+        custonText.addActionListener(e -> {
+            if(custonText.getText().length() != 0) {
+                CameraASCII.characterValue = custonText.getText();
+            }
         });
 
         split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,imagePanel,controls);
@@ -188,12 +225,20 @@ class Window extends JFrame {
         controls.add(muchButton);
         controls.add(Box.createRigidArea(new Dimension(0, 30)));
         controls.add(extremeButton);
+        controls.add(Box.createRigidArea(new Dimension(0, 30)));
+        controls.add(textIndication);
+        controls.add(Box.createRigidArea(new Dimension(0, 30)));
+        controls.add(custonText);
+        controls.add(Box.createRigidArea(new Dimension(0, 30)));
+        controls.add(tips);
+        controls.add(Box.createRigidArea(new Dimension(0, 30)));
+        controls.add(myName);
 
         // reseta a imagem se travar
         repaintTimer = new Timer(16, e -> imagePanel.repaint());
         repaintTimer.start();
         // define um tamanho pra quando a pessoa tirar da tela cheia
-        setSize(1200, 800);
+        setSize(1200, 768);
         // faz abrir em tela cheia
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
