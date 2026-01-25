@@ -1,2 +1,3 @@
 - Um gerenciador da GPU e CPU, mostra a % de uso de ambos.
-- Mas tem utilidades escondidas (pretendo adicionar mais)
+- Um conversor de camera para caracteres ASCII
+- Uma pagina com um esqueleto requebrando
