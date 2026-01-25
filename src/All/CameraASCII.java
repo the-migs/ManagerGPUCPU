@@ -19,6 +19,7 @@ public class CameraASCII {
     static volatile BufferedImage grayImage;
     static volatile BufferedImage ASCIIImage;
 
+    // niveis de caracteres para cada iluminacao
     static volatile String characterValue = "  .=10?XY";
     static volatile String almostNoLightingString = " .=10!?XY";
     static volatile String littleLightingString = "  .=10?LYX";
@@ -28,7 +29,7 @@ public class CameraASCII {
     static volatile String extremeLightingString = "   .=10?";
 
     static void metodSuprem() {
-        System.out.println("metodSuprem");
+        System.out.println("Metod Supreme On");
 
         CameraASCII.running = true; // garante que as threads rodem
         if (CameraASCII.webcam != null && CameraASCII.webcam.isOpen()) {
@@ -79,11 +80,13 @@ class Window extends JFrame {
         setIconImage(icon);
         setBackground(Color.BLACK);
 
+        // criando e configurando o painel para a imagem e outro para as configuracoes
         imagePanel = new ImagePanel();
         JPanel controls = new JPanel();
         controls.setLayout(new BoxLayout(controls, BoxLayout.Y_AXIS));
         controls.setBorder(BorderFactory.createLineBorder(new Color(purple.getRGB()), 4));
 
+        // criando e personalizando componentes do menu
         JLabel title = new JLabel(" Lighting configuration ");
         title.setForeground(new Color(purple.getRGB()));
 
@@ -158,6 +161,7 @@ class Window extends JFrame {
         JLabel myName = new JLabel("Created by \"the-migs\"");
         myName.setFont(new Font("Segoe UI", Font.BOLD, 15));
 
+        // centralizando componentes
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         almostNoButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         littleButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -206,8 +210,8 @@ class Window extends JFrame {
 
         setLayout(new BorderLayout());
         add(split, BorderLayout.CENTER);
-        split.setResizeWeight(0.5); // 50% / 50%
-        split.setDividerSize(0);    // sem barra visível
+
+        split.setDividerSize(0); // sem barra visível
         controls.setBackground(Color.WHITE);
 
         controls.add(Box.createRigidArea(new Dimension(0, 30)));
@@ -311,7 +315,7 @@ class ConvertGrayThread extends Thread {
             }
         }
     }
-    // Conversão manual RGB -> Grayscale
+    // conversão manual RGB -> Grayscale
     static BufferedImage convertToGrayscale(BufferedImage source) {
         int width = source.getWidth();
         int height = source.getHeight();
